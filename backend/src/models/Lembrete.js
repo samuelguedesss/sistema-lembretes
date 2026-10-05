@@ -18,6 +18,8 @@ export default class Lembrete extends Model {
     }
 
     static associate(models) {
-        this.belongsTo(models.Usuario, {foreignKey: 'usuarioId', as: 'usuario'})
+        this.belongsTo(models.Usuario, {foreignKey: 'usuarioId', as: 'usuario'});
+        this.hasMany(models.Aviso, {foreignKey: 'lembreteId', as: 'avisos'});
     }
+   
 }

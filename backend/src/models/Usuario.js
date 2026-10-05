@@ -15,6 +15,10 @@ export default class Usuario extends Model {
                 tableName: 'usuarios',
             },
         )
-    };
+    }
+
+    static associate(models) {
+        this.hasMany(models.Lembrete, {foreignKey: 'usuarioId', as: 'lembretes'})
+    }
 }
 

@@ -19,7 +19,7 @@ const databaseConfig = {
         timestamps: true,
         underscored: true,
     },
-    logging: false,
+    logging: console.log,
 };
 
 export const sequelize = new Sequelize(databaseConfig);
