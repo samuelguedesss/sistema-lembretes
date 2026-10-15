@@ -1,0 +1,1 @@
+import { lembreteController } from './controller/lembreteController.js'
