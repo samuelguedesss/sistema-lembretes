@@ -1,8 +1,9 @@
 import { Router } from 'express'
 import { asyncHandler } from '../middleware/asyncHandler.js'
+import { lembreteController } from '../container.js'
 
 const router = Router()
 
-// const controller = new 
+router.post('/', asyncHandler((req, res) => lembreteController.criar(req, res)));
 
-// router.post('/', asyncHandler((req, res) => (req, res)));
+export default router

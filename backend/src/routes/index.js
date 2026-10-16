@@ -1,8 +1,8 @@
 import { Router } from "express";
-import LembreteRoutes from './LembreteRoutes.js'
+import lembreteRoutes from './LembreteRoutes.js'
 
 const router = Router()
 
-//router.use('/lembretes', LembreteRoutes);
+router.use('/lembretes', lembreteRoutes);
 
 export default router
