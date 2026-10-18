@@ -7,4 +7,10 @@ export class LembreteController {
         const lembrete = await this.service.criar(req.body);
         return res.status(201).json(lembrete);
     }
+
+    async buscarPorId(req, res) {
+        const id = Number(req.params.id)
+        const lembrete = await this.service.buscarPorId(id)
+        return res.status(200).json(lembrete)
+    }
 }
