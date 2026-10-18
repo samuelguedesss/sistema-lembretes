@@ -5,5 +5,5 @@ export function erroHandler(err, req, res, next) {
         console.error('[500]', err);
     }
 
-    return res.status(status).json({err: err.message});
+    return res.status(status).json({error: err.message});
 }
