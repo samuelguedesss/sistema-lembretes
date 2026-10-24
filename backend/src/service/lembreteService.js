@@ -20,8 +20,8 @@ export class LembreteService {
     }
 
     async listarPorUsuario(usuarioId) {
-        const lembrete = await this.repository.listarPorUsuario(usuarioId);
-        return lembrete;
+        const lembretes = await this.repository.listarPorUsuario(usuarioId);
+        return lembretes;
     }
 
     async atualizar(id, dados) {
@@ -30,7 +30,11 @@ export class LembreteService {
         return await this.buscarPorId(id);
     }
 
-    async deletar() {
+    async deletar(id) {
+        const linhasApagadas = await this.repository.deletar(id);
+        if (linhasApagadas === 0) {
+            throw new NotFoundError('Lembrete')
+        }
 
     }
 }

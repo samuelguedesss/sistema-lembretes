@@ -16,14 +16,20 @@ export class LembreteController {
 
     async listarPorUsuario(req, res) {
         const usuarioId = Number(req.query.usuario);
-        const lembrete = await this.service.listarPorUsuario(usuarioId);
-        return res.status(200).json(lembrete);
+        const lembretes = await this.service.listarPorUsuario(usuarioId);
+        return res.status(200).json(lembretes);
     }
 
     async atualizar(req, res) {
         const id = Number(req.params.id);
         const dados = req.body;
-        const atualizar = await this.service.atualizar(id, dados);
-        return res.status(200).json(atualizar);
+        const lembrete = await this.service.atualizar(id, dados);
+        return res.status(200).json(lembrete);
+    }
+
+    async deletar(req, res) {
+        const id = Number(req.params.id)
+        this.service.deletar(id)
+        return res.sendStatus(204);
     }
 }
