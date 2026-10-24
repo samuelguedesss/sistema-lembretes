@@ -15,7 +15,7 @@ export class LembreteController {
     }
 
     async listarPorUsuario(req, res) {
-        const usuarioId = Number(req.params.id);
+        const usuarioId = Number(req.query.usuario);
         const lembrete = await this.service.listarPorUsuario(usuarioId);
         return res.status(200).json(lembrete);
     }

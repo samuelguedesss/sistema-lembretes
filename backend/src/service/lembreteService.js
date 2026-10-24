@@ -21,16 +21,12 @@ export class LembreteService {
 
     async listarPorUsuario(usuarioId) {
         const lembrete = await this.repository.listarPorUsuario(usuarioId);
-
-        if(lembrete.length === 0) {
-            throw new NotFoundError('Lembrete');
-        }
-        
         return lembrete;
     }
 
     async atualizar(id, dados) {
-        await this.buscarPorId(id).atualizar(id, dados);
+        await this.buscarPorId(id);
+        await this.repository.atualizar(id, dados);
         return await this.buscarPorId(id);
     }
 
