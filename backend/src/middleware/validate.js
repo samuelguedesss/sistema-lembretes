@@ -1,4 +1,5 @@
 import { ValidationError } from "../error/AppError.js";
+import { ZodError } from 'zod'
 
 export function validate(schema) {
     return (req, res, next) => {
@@ -6,8 +7,12 @@ export function validate(schema) {
             req.body = schema.parse(req.body);
             next();
         } catch (error) {
-            const primeiroError = error.issues[0];
-            throw new ValidationError(primeiroError.message);
+            if(error instanceof ZodError){
+                const primeiroError = error.issues[0];
+                throw new ValidationError(primeiroError.message);
+            } else {
+                throw error
+            }
         }
     }
-};ß
+};
