@@ -1,10 +1,10 @@
 import { ValidationError } from "../error/AppError.js";
 import { ZodError } from 'zod'
 
-export function validate(schema) {
+export function validate(schema, origem = 'body') {
     return (req, res, next) => {
         try {
-            req.body = schema.parse(req.body);
+            req[origem] = schema.parse(req[origem]);
             next();
         } catch (error) {
             if(error instanceof ZodError){

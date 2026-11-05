@@ -20,4 +20,8 @@ export const criarLembrete = z.object({
 export const atualizarLembrete = criarLembrete.partial().omit({usuarioId: true}).refine(
     (dados) => Object.keys(dados).length > 0,
     {message: 'Informe pelo menos um campo para atualizar'}
-)
+);
+
+export const idParams = z.object({
+    id: z.coerce.number({message: "O id tem que ser um Numero"}).positive('O id deve ser positivo').int('O id deve ser um número inteiro'),
+});
